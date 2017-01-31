@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />
+	<title>titelbild</title>
+	<!-- copy these lines to your document head: -->
+	<meta name="viewport" content="user-scalable=yes, width=1024" />
+	<style type="text/css">
+		html {
+			height:100%;
+		}
+		body {
+			background-color:#EEEEEE;
+			margin:0;
+			height:100%;
+		}
+	</style>  
+	<link rel="stylesheet" type="text/css" href="resources/rossipotti.css"></link>
+	<script type="text/javascript" src="resources/jquery-1.11.0.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="resources/jquery.fancybox.css"></link>
+	<script type="text/javascript" src="resources/jquery.fancybox.pack.js"></script>
+	<script type="text/javascript" src="resources/globaldefs.js"></script>
+
+<script type="text/javascript">
+	// Dokumentation: http://fancyapps.com/fancybox/#docs
+	$(document).ready(function() {
+		$(".popupframe").fancybox({
+			maxWidth	: 1024,
+			maxHeight	: 630,
+			fitToView	: true,
+			width		: '90%',
+			height		: '90%',
+			autoSize	: false,
+			closeClick	: false,
+			openEffect	: 'fade',
+			closeEffect	: 'fade'
+		});
+		$(".popupframeklein").fancybox({
+			maxWidth	: '80%',
+			fitToView	: true,
+			autoSize	: true,
+			closeClick	: false,
+			openEffect	: 'fade',
+			closeEffect	: 'fade'
+		});
+	});
+
+function punktesetzen() {
+	// mache einmal kling
+	if (window.lautsprecher) {
+		var myAudio = document.getElementById('coin'); 
+		myAudio.play();
+	}
+	// hier wird das Textfeld mit den Punkten hoch oder runter gezaehlt
+	var textElement1 = document.getElementById('punktzahl');
+	var textpunkte = Math.floor(textElement1.innerHTML);
+	if (textpunkte < window.punktzahl) {
+		textpunkte++;
+		textElement1.innerHTML = textpunkte.toString();
+		window.setTimeout((function () { punktesetzen(); }), 50);
+	}
+	else if (textpunkte > window.punktzahl) {
+		textpunkte--;
+		textElement1.innerHTML = textpunkte.toString();
+		window.setTimeout((function () { punktesetzen(); }), 100);
+	}
+}
+	// "tasche", "ratte", "rossi", "pudding", "uhr", "joker", "fernseher", "albert", "fisch"
+	// abrufen: 
+	// window.gewinne[2].length : Anzahl der Subgewinne des 2. Symbols
+	// window.gewinne[2][1]["url"] : URL des 2. Subgewinns (Zaehlung beginnt bei 0) des 2. Symbols
+	window.gewinne = new Array ();
+	window.gewinne = [
+		// Nichts gewonnen noch aendern: beitragschreiben.html
+		[
+			{txt:"Nichts gewonnen", url:"#keingewinn"},
+			{txt:"Wieder Pech", url:"#keingewinn"},
+			{txt:"Leider Niete", url:"#keingewinn"}
+		],
+		// Kulturtasche
+		[
+			{txt:"Die Kulturtasche unterh&auml;lt sich mit Berliner Kindern &uuml;ber Abenteuer", url:"http://www.rossipotti.de/ausgabe18/kulturtasche.html"},
+		 	{txt:"Die Kulturtasche im Gespr&auml;ch mit dem Autor Zoran Drvenkar", url:"http://www.rossipotti.de/ausgabe16/kulturtasche.html"},
+		 	{txt:"Die Kulturtasche tratscht mit dem Illustrator Nikolaus Heidelbach", url:"http://www.rossipotti.de/ausgabe09/kulturtasche.html"}
+		],
+		// Ratte
+		[
+			{txt:"Steige ein ins Buch!", url:"http://www.rossipotti.de/inhalt/literaturlexikon/sachbegriffe/buch.html#Leser"},
+		 	{txt:"Bastel mit Eric Carle eine hungrige Raupe", url:"http://www.rossipotti.de/inhalt/bilderbuch/malwerkstatt.html"},
+		 	{txt:"Vermehre dein Wissen im Literaturlexikon!", url:"http://www.rossipotti.de/inhalt/"}
+		],
+		// Rossipotti
+		[
+			{txt:"Intro Rossipotti ????", url:"#intro"},
+		 	{txt:"Die Wahrheit &uuml;ber digitale Zahlen", url:"http://www.rossipotti.de/ausgabe21/etwas_anderes.html"},
+		 	{txt:"Hauptgewinn! Du darfst ins riesige, geheime Rossipotti-Archiv!", url:"http://www.rossipotti.de/archiv.html"}
+		],
+		// Pudding
+		[
+			{txt:"Seitenstark Kinder Chat (externe Webseite)", url:"http://vmkinderchat.zmk.uni-leipzig.de/Chat/client/auth/login/2"},
+		 	{txt:"Schreibe mit bei Rossipottis Textkrake", url:"http://www.rossipotti.de/cgi-bin/textkrake/textkrake.cgi"},
+		 	{txt:"Lese und schreibe im Wackelpudding-Magazin", url:"http://www.rossipotti.de/inhalt/wackelpudding.html"}
+		],
+		// 11 Uhr-Termin
+		[
+			{txt:"Der sch&ouml;nste Tag im Jahr", url:"http://www.rossipotti.de/ausgabe02/11uhr_termin.html"},
+		 	{txt:"Drei Kurzgeschichten aus dem 11Uhr Termin", url:"http://www.rossipotti.de/ausgabe07/11uhr_termin.html"},
+		 	{txt:"Gedichte zum Lesen, Anschauen und H&ouml;ren", url:"http://www.rossipotti.de/ausgabe10/11uhr_termin.html"}
+		],
+		// Joker
+		[
+			{txt:"Herr Fresssack und die Bremer Stadtmusikanten", url:"http://www.rossipotti.de/ausgabe08/hoergeschichte.html"},
+		 	{txt:"Mache eine Weltreise mit der akustischen Weltkarte!", url:"http://www.rossipotti.de/ausgabe15/hoergeschichte.html"},
+		 	{txt:"Was tun gegen Langeweile?", url:"http://www.rossipotti.de/ausgabe22/notizen_und_ideen.html"}
+		],
+		// Fernseher
+		[
+			{txt:"Comic: Zeitmaschine", url:"http://www.rossipotti.de/ausgabe24/comic/zeitmaschine.html"},
+		 	{txt:"Das gro&szlig;e 'Phantasy oder Fantasie'-Quiz", url:"http://www.rossipotti.de/ausgabe23/comic/literaturquiz.html"},
+		 	{txt:"Comic: Konrad", url:"http://www.rossipotti.de/ausgabe11/konrad/konrad.html"}
+		],
+		// Salon Albert
+		[
+			{txt:"Der literarische Salon Albert, heute mit René Descartes", url:"http://www.rossipotti.de/ausgabe25/salon_albert.html"},
+		 	{txt:"In achtzig Tagen um die Welt mit Alberts literarischem Salon", url:"http://www.rossipotti.de/ausgabe18/salon_albert.html"},
+		 	{txt:"Das Grundgesetz im Salon Albert", url:"http://www.rossipotti.de/ausgabe22/salon_albert.html"}
+		],
+		// Leibspeise (Fisch)
+		[
+			{txt:"Abenteuerliche Buchtipps in Rossipottis Leibspeise", url:"http://www.rossipotti.de/ausgabe18/rossipottis_leibspeise.html"},
+		 	{txt:"Rossipottis Leibspeise und andere Lieblingsb&uuml;cher", url:"http://www.rossipotti.de/ausgabe12/rossipottis_leibspeise.html"},
+		 	{txt:"Noch mehr Lieblingsb&uuml;cher von Rossipotti", url:"http://www.rossipotti.de/ausgabe02/rossipottis_leibspeise.html"}
+		]];
+</script>
+	<!-- end copy -->
+
+  </head>
+  <body>
+  <!-- start zentrierrahmen -->
+	<div style="display: table; left: 0px; top: 0px; width: 100%; height: 90%;">
+		<div style="display: table-cell; vertical-align: middle;">
+
+			<div id="preloader" style="margin:auto;overflow:hidden;width:1024px;height:630px;background-color:#DDDDDD;">
+				<div style="display: table-cell; height: inherit; text-align: center; vertical-align: middle; width: inherit;">
+					<div>
+						<div id="rossi_logo" style="display: none; width:250px;height:299px;margin-left: auto;margin-right: auto;margin-top: 150px;">
+							<img src="resources/rossi_logo.gif">
+						</div>
+						<div class="spinner"></div>
+					</div>	
+				</div>
+			</div>
+			<script type="text/javascript">logoZeigen();
+			//if (!sessionStorageLesen("weitererAufruf")) {
+			//	document.getElementById("rossi_logo").style.display = "inline";
+			//	document.getElementById("preloader").style.backgroundColor = "#9933FF";
+			//	sessionStorageSchreiben ("weitererAufruf", "true");
+			//}
+			</script>
+
+			<div style ="margin: -630px auto auto auto;width:1024px;height:630px;">
+				<!-- copy these lines to your document: -->
+				<div id="titelbild_hype_container" style="position:relative;overflow:hidden;width:1024px;height:630px;">
+					<script type="text/javascript" charset="utf-8" src="titelbild.hyperesources/titelbild_hype_generated_script.js?52645"></script>
+				</div>
+				<!-- end copy -->
+				<div id="fusszeile">
+					<table style="margin: 0pt auto; width: 800px;">
+						<tbody>
+						<tr>
+						  <td><a href="#">Impressum</a></td>
+						  <td><a href="#">&Uuml;ber uns</a></td>
+						  <td><a href="#">Literaturlexikon</a></td>
+						  <td><a href="#">Archiv</a></td>
+						  <td><a href="#">Seitenstark</a></td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- end zentrierrahmen -->
+	
+
+
+	<!-- text content for search engines: -->
+
+	<div style="display:none">
+
+		<div></div>
+		<div></div>
+		<div>
+</div>
+		<div>Du hast nicht mehr gen&uuml;gend Punkte, um weiter zu spielen! Schreibe einen Beitrag zum Thema Gl&uuml;ck und verdiene dir neue Punkte dazu!
+</div>
+		<div></div>
+		<div></div>
+		<div>Punkte</div>
+		<div>Gewinn</div>
+		<div></div>
+		<div>Vielen Dank
+f&uuml;r deinen Gl&uuml;cks-Beitrag!
+Dies ist dein Text: 
+
+</div>
+		<div></div>
+		<div>100</div>
+		<div></div>
+		<div></div>
+		<div>Genug gespielt?
+Dann folge mir in die echte
+Gl&uuml;cks-Galaxie von Rossipotti!
+</div>
+		<div>Hier darf Rossipotti
+ mal erkl&auml;ren, was das Motto
+der aktuellen Ausgabe ist und was es sonst noch zu beachten gibt.
+</div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div>Hier geht's lang zum
+Weg der Kontemplation!
+</div>
+		<div></div>
+		<div>Keine Ahnung, was Rossipotti
+hier erz&auml;hlt. Vielleicht ein Link zum
+Impressum!
+</div>
+		<div>Hier geht's lang zur
+Stra&szlig;e der Kultur!
+</div>
+		<div>Hier geht's lang zur
+Mach-Mit-Gasse !
+</div>
+
+	</div>
+
+	<!-- end text content: -->
+
+  </body>
+</html>

@@ -1,0 +1,114 @@
+/* Stylesheet fuer alle Ausgabe28-Dateien */
+@font-face {
+	font-family: 'Conv_EHSMB';
+	src: url('EHSMB.eot') format('embedded-opentype'),
+		 url('EHSMB.woff') format('woff'),
+		 url('EHSMB.ttf') format('truetype'),
+		 url('EHSMB.svg') format('svg');
+}
+@font-face {
+	font-family: 'Conv_LCDMN___';
+	src: url('LCDMN___.eot');
+	src: local('?'), url('LCDMN___.woff') format('woff'), url('LCDMN___.ttf') format('truetype'), url('LCDMN___.svg') format('svg');
+}
+@font-face {
+	font-family: 'Comic Neue Angular';
+	src: url('ComicNeue-Angular-Regular.eot'); /* IE9 Compat Modes */
+	src: url('ComicNeue-Angular-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+		url('ComicNeue-Angular-Regular.woff') format('woff'), /* Modern Browsers */
+		url('ComicNeue-Angular-Regular.woff2') format('woff2'), /* Even Moderner Browsers */
+		url('ComicNeue-Angular-Regular.ttf')  format('truetype'); /* Safari, Android, iOS */
+	font-weight: 300;
+}
+@font-face {
+font-family: 'Comic Neue Angular';
+  src: url('ComicNeue-Angular-Regular-Oblique.eot'); /* IE9 Compat Modes */
+  src: url('ComicNeue-Angular-Regular-Oblique.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	   url('ComicNeue-Angular-Regular-Oblique.woff') format('woff'), /* Modern Browsers */
+	   url('ComicNeue-Angular-Regular-Oblique.woff2') format('woff2'), /* Even Moderner Browsers */
+	   url('ComicNeue-Angular-Regular-Oblique.ttf')  format('truetype'), /* Safari, Android, iOS */ 
+	   url('ComicNeue-Angular-Regular-Oblique.svg')  format('svg'); 
+  font-weight: 300;
+  font-style: oblique;
+}
+
+#fusszeile
+	{
+		width: 800px;
+		font-family: sans-serif;
+		font-weight: bold;
+		font-size: 12 px;
+		height: 40px;
+		margin: -40px auto 0;
+		overflow: hidden;
+		position: relative;
+		top: 0;
+		transition: top 0.5s ease-in-out 0s;
+		z-index: 10;
+	}
+
+#fusszeile a 
+	{
+	   text-decoration: none;
+	   color: #B98CB8;
+	   padding: 5px;
+	   border-radius: 5px;
+	}
+
+#fusszeile a:hover 
+	{
+		color: #993399;
+		background-color: rgba(255,255,255,0.7);
+	} 
+	
+#fusszeile td 
+	  { 
+		/* border: 1px solid; */
+		width: 80px;
+		text-align: center;
+		padding: 10px 0;
+	  }
+
+/* css3 fuer Lade-Animation */
+.spinner {
+	/* Size and position */
+	font-size: 100px; /* 1em */
+	width: 1em;
+	height: 1em;
+	position: relative;
+	margin: 22px auto;
+
+	/* Styles */
+	border-radius: 50%;
+	background-image: url("gluecksrad.png");
+	background-repeat: no-repeat;
+	box-shadow: 
+		inset 0 0 0 .04em rgba(0,0,0,0.1), /* Inner border */
+		0 0 0 .06em rgba(055,055,255,0.3); /* Outter border */
+	opacity: 0.9;
+	-webkit-animation: rota 10s ease-in-out infinite alternate;
+	animation: rota 10s ease-in-out infinite alternate;
+}
+
+.spinner:after {
+	/* Size */
+	content: "";
+	width: 15%;
+	height: 15%;
+
+	/* Perfect centering */
+	position: absolute;
+	top: 38%;
+	left: 38%;
+
+	/* Styles */
+	border: .05em solid rgba(255,255,255,0.9);
+	border-radius: inherit;
+	opacity: 0.6;
+}
+@-webkit-keyframes rota {
+	100% { -webkit-transform: rotate(3600deg); }
+}
+@keyframes rota {
+	100% { transform: rotate(3600deg); }
+}
